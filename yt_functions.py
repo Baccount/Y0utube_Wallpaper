@@ -6,6 +6,87 @@ import youtube_dl
 from pyfiglet import Figlet
 
 
+
+def savePath() -> str:
+    # Returning the path to save the video
+    return os.path.expanduser("~") + '/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos'
+
+
+
+
+
+def video(url: str = None):
+    """
+    Download the video from the given url
+    
+    :param url: the url of the video you want to download
+    :type url: str
+    """
+    # check if the url is valid
+    if check_url(url) is None:
+        print("Invalid URL")
+        return
+
+    # get the path to save the video
+    save_path = savePath()
+    if save_path is None:
+        return
+
+    # download the video
+    download_video(url, save_path)
+    print("Video downloaded successfully")
+
+
+
+
+def playlist(url: str = None):
+    """
+    Download playlist from youtube using youtube-dl
+    
+    :param url: the url of the playlist
+    :type url: str
+    """  
+    # check if the url is valid
+    if check_url(url) is None:
+        print("Invalid URL")
+        return
+    
+    # get the path to save the video
+    save_path = savePath()
+    if save_path is None:
+        return
+
+    # download playlist from youtube using youtube-dl
+    download_playlist(url, save_path)
+    print("Playlist downloaded successfully")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def show_splash():
     """
     Display splash screen
