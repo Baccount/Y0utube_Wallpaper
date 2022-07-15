@@ -1,26 +1,27 @@
 import os
 import re  # regex
-from time import sleep
 from random import randint
 
 import youtube_dl
 from pyfiglet import Figlet
 
 
-
 def savePath() -> str:
     # Returning the path to save the video
-    return os.path.expanduser("~") + '/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos'
+    return (
+        os.path.expanduser("~")
+        + "/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos"
+    )
+
 
 def get_random_number():
     return str(randint(0, 100000))
 
 
-
 def video(url: str = None):
     """
     Download the video from the given url
-    
+
     :param url: the url of the video you want to download
     :type url: str
     """
@@ -39,20 +40,18 @@ def video(url: str = None):
     print("Video downloaded successfully")
 
 
-
-
 def playlist(url: str = None):
     """
     Download playlist from youtube using youtube-dl
-    
+
     :param url: the url of the playlist
     :type url: str
-    """  
+    """
     # check if the url is valid
     if check_url(url) is None:
         print("Invalid URL")
         return
-    
+
     # get the path to save the video
     save_path = savePath()
     if save_path is None:
@@ -61,32 +60,6 @@ def playlist(url: str = None):
     # download playlist from youtube using youtube-dl
     download_playlist(url, save_path)
     print("Playlist downloaded successfully")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def show_splash():
@@ -110,7 +83,7 @@ def check_url(url: str):
     """
     It takes a string as an argument, checks if it's a valid youtube url, and returns the url if it is,
     or None if it isn't
-    
+
     :param url: The URL of the video to be downloaded
     :type url: str
     :return: The match object or None
@@ -127,7 +100,7 @@ def check_url(url: str):
 def green(text: str) -> str:
     """
     `green` takes a string and returns a string
-    
+
     :param text: the text to be colored
     :type text: str
     :return: The text in green.
@@ -138,7 +111,7 @@ def green(text: str) -> str:
 def red(text: str) -> str:
     """
     `red` takes a string and returns a string
-    
+
     :param text: The text to be colored
     :type text: str
     :return: The text is being returned with the color red.
@@ -149,7 +122,7 @@ def red(text: str) -> str:
 def blue(text: str) -> str:
     """
     `blue` takes a string and returns a string
-    
+
     :param text: The text to be colored
     :type text: str
     :return: The text is being returned with the color blue.
@@ -160,7 +133,7 @@ def blue(text: str) -> str:
 def download_video(url: str, save_path: str):
     """
     Download the video from the given url and save it to the given path
-    
+
     :param url: the url of the video you want to download
     :type url: str
     :param save_path: The path where you want to save the video
@@ -170,7 +143,7 @@ def download_video(url: str, save_path: str):
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": save_path + '/' + get_random_number(),
+        "outtmpl": save_path + "/" + get_random_number(),
     }
     youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
 
@@ -178,7 +151,7 @@ def download_video(url: str, save_path: str):
 def download_playlist(url: str, save_path: str):
     """
     Download playlist from youtube using youtube-dl
-    
+
     :param url: the url of the playlist
     :type url: str
     :param save_path: The path where you want to save the downloaded videos
@@ -189,7 +162,7 @@ def download_playlist(url: str, save_path: str):
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": save_path + '/' + get_random_number(),
+        "outtmpl": save_path + "/" + get_random_number(),
         "yes-playlist": True,
     }
     youtube_dl.YoutubeDL(ydl_opts).extract_info(url)

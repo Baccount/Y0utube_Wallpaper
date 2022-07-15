@@ -1,7 +1,6 @@
-
 import argparse as ap
 
-from yt_functions import clear_screen, savePath, show_splash, video, playlist
+from yt_functions import clear_screen, playlist, show_splash, video
 
 # Youtube Offline Downloader
 
