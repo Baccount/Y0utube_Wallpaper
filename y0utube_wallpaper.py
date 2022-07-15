@@ -1,7 +1,6 @@
-
 import argparse as ap
 
-from project_func import clear_screen, savePath, show_splash
+from yt_functions import clear_screen, playlist, show_splash, video
 
 # Youtube Offline Downloader
 
@@ -22,35 +21,29 @@ def main():
 
     # if the url arg is provided, then download the video
     if parser.parse_args().url:
-        choice1(parser.parse_args().url)
-
-    # if the path arg is provided, then set the path
-    if parser.parse_args().path:
-        savePath(parser.parse_args().path)
+        video(parser.parse_args().url)
 
     # if the playlist arg is provided, then download the playlist
     if parser.parse_args().playlist:
-        choice3(parser.parse_args().playlist)
+        playlist(parser.parse_args().playlist)
+    while True:
+        # if no arguments are passed, show the splash screen
+        clear_screen()
+        show_splash()
+        print("1. Download video")
+        print("2. Download Playlist")
+        print("3. Exit")
 
-    # if no arguments are passed, show the splash screen
-    clear_screen()
-    show_splash()
-    print("1. Download video")
-    print("2. Default Download Location")
-    print("3. Download Playlist")
-    print("4. Exit")
-
-    choice = input("Enter your choice: ")
-    if choice == "1":
-        choice1()
-    elif choice == "2":
-        savePath()
-        main()
-    elif choice == "3":
-        choice3()
-    elif choice == "4":
-        print("Exiting...")
-        exit(0)
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            url = input("Enter the URL of the video: ")
+            video(url)
+        elif choice == "2":
+            url = input("Enter the URL of the playlist: ")
+            playlist(url)
+        elif choice == "3":
+            print("Exiting...")
+            exit(0)
 
 
 if __name__ == "__main__":
