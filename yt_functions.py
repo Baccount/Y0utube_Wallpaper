@@ -6,8 +6,11 @@ import youtube_dl
 from pyfiglet import Figlet
 
 temp_path = os.path.expanduser("~") + "/Library/Caches/Y0utube"
-final_path = os.path.expanduser(
-    "~") + "/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos"
+final_path = (
+    os.path.expanduser("~")
+    + "/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos"
+)
+
 
 def create_temp_folder():
     """
@@ -15,7 +18,6 @@ def create_temp_folder():
     """
     if not os.path.exists(temp_path):
         os.makedirs(temp_path)
-
 
 
 def move_video():
@@ -35,18 +37,7 @@ def delete_temp_folder():
         os.system("rm -rf " + temp_path)
 
 
-
-
-
-
-
-
-
-
-
-
-
-#===========================================================
+# ===========================================================
 def savePath() -> str:
     # Returning the path to save the video
     return (
