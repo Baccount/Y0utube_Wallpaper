@@ -67,7 +67,7 @@ def show_splash():
     Display splash screen
     """
     clear_screen()
-    title = "Y0utube \n Wallpaper"
+    title = "Y0Utube \n Wallpaper"
     f = Figlet(font="standard")
     print(red(f.renderText(title)))
 
