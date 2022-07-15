@@ -1,6 +1,7 @@
 import os
 import re  # regex
 from time import sleep
+from random import randint
 
 import youtube_dl
 from pyfiglet import Figlet
@@ -11,7 +12,8 @@ def savePath() -> str:
     # Returning the path to save the video
     return os.path.expanduser("~") + '/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos'
 
-
+def get_random_number():
+    return str(randint(0, 100000))
 
 
 
@@ -92,7 +94,7 @@ def show_splash():
     Display splash screen
     """
     clear_screen()
-    title = "Y0utube Wallpaper"
+    title = "Y0utube \n Wallpaper"
     f = Figlet(font="standard")
     print(red(f.renderText(title)))
 
@@ -168,7 +170,7 @@ def download_video(url: str, save_path: str):
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": save_path + "/%(title)s.%(ext)s",
+        "outtmpl": save_path + '/' + get_random_number(),
     }
     youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
 
@@ -187,7 +189,7 @@ def download_playlist(url: str, save_path: str):
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": save_path + "/%(title)s.%(ext)s",
+        "outtmpl": save_path + '/' + get_random_number(),
         "yes-playlist": True,
     }
     youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
