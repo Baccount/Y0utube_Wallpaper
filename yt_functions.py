@@ -34,6 +34,7 @@ def move_video():
         print(red("Error: " + str(e)))
         print(red("Video not installed"))
 
+
 def delete_temp_folder():
     """
     Delete the temporary folder "Forcefully"
@@ -73,7 +74,7 @@ def video(url: str = None):
         return
 
     # download the video
-    download_video(url, save_path)
+    download_video(url)
     print("Video downloaded successfully")
 
 
@@ -167,7 +168,7 @@ def blue(text: str) -> str:
     return "\033[34m" + text + "\033[0m"
 
 
-def download_video(url: str, save_path: str):
+def download_video(url: str):
     """
     Download the video from the given url and save it to the given path
 
@@ -183,16 +184,17 @@ def download_video(url: str, save_path: str):
         "outtmpl": temp_path + "/" + get_random_number(),
     }
     try:
+        print(green("Video downloaded successfully"))
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
         move_video()
-        print(green("Video downloaded successfully"))
         sleep(1)
     except Exception as e:
         print(red("Error: " + str(e)))
         print(red("Video not downloaded"))
         delete_temp_folder()
 
-def download_playlist(url: str, save_path: str):
+
+def download_playlist(url: str):
     """
     Download playlist from youtube using youtube-dl
 
@@ -210,9 +212,9 @@ def download_playlist(url: str, save_path: str):
         "yes-playlist": True,
     }
     try:
+        print(green("Playlist downloaded successfully"))
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
         move_video()
-        print(green("Playlist downloaded successfully"))
         sleep(1)
     except Exception as e:
         print(red("Error: " + str(e)))
