@@ -36,7 +36,7 @@ def move_video():
 
 def delete_temp_folder():
     """
-    Delete the temporary folder Forcefully
+    Delete the temporary folder "Forcefully"
     """
     if os.path.exists(temp_path):
         os.system("rm -rf " + temp_path)
@@ -182,11 +182,15 @@ def download_video(url: str, save_path: str):
         # save location of the video
         "outtmpl": temp_path + "/" + get_random_number(),
     }
-    youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
-    move_video()
-    sleep(1)
-    print(green("Video downloaded successfully"))
-
+    try:
+        youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
+        move_video()
+        print(green("Video downloaded successfully"))
+        sleep(1)
+    except Exception as e:
+        print(red("Error: " + str(e)))
+        print(red("Video not downloaded"))
+        delete_temp_folder()
 
 def download_playlist(url: str, save_path: str):
     """
@@ -205,7 +209,12 @@ def download_playlist(url: str, save_path: str):
         "outtmpl": temp_path + "/" + get_random_number(),
         "yes-playlist": True,
     }
-    youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
-    move_video()
-    sleep(1)
-    print(green("Playlist downloaded successfully"))
+    try:
+        youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
+        move_video()
+        print(green("Playlist downloaded successfully"))
+        sleep(1)
+    except Exception as e:
+        print(red("Error: " + str(e)))
+        print(red("Playlist not downloaded"))
+        delete_temp_folder()
