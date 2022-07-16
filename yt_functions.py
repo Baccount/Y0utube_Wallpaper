@@ -43,13 +43,6 @@ def delete_temp_folder():
         os.system("rm -rf " + temp_path)
 
 
-# ===========================================================
-def savePath() -> str:
-    # Returning the path to save the video
-    return (
-        os.path.expanduser("~")
-        + "/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos"
-    )
 
 
 def get_random_number():
@@ -69,7 +62,7 @@ def video(url: str = None):
         return
 
     # get the path to save the video
-    save_path = savePath()
+    save_path = final_path
     if save_path is None:
         return
 
@@ -91,7 +84,7 @@ def playlist(url: str = None):
         return
 
     # get the path to save the video
-    save_path = savePath()
+    save_path = final_path
     if save_path is None:
         return
 
@@ -184,8 +177,8 @@ def download_video(url: str):
         "outtmpl": temp_path + "/" + get_random_number(),
     }
     try:
-        print(green("Video downloaded successfully"))
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
+        print(green("Video downloaded successfully"))
         move_video()
         sleep(1)
     except Exception as e:
@@ -212,8 +205,8 @@ def download_playlist(url: str):
         "yes-playlist": True,
     }
     try:
-        print(green("Playlist downloaded successfully"))
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
+        print(green("Playlist downloaded successfully"))
         move_video()
         sleep(1)
     except Exception as e:
