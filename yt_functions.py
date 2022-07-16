@@ -1,6 +1,7 @@
 import os
 import re  # regex
 from random import randint
+from time import sleep
 
 import youtube_dl
 from pyfiglet import Figlet
@@ -22,12 +23,16 @@ def create_temp_folder():
 
 def move_video():
     """
-    Move the video from the temporary folder to the given path
+    Move the video from the temporary folder to the final folder
     """
     # move the video from the temporary folder to the given path
-    for file in os.listdir(temp_path):
-        os.rename(temp_path + "/" + file, final_path + "/" + file)
-
+    try:
+        for file in os.listdir(temp_path):
+            os.rename(temp_path + "/" + file, final_path + "/" + file)
+        print(green("Video installed successfully"))
+    except Exception as e:
+        print(red("Error: " + str(e)))
+        print(red("Video not installed"))
 
 def delete_temp_folder():
     """
@@ -179,6 +184,8 @@ def download_video(url: str, save_path: str):
     }
     youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
     move_video()
+    sleep(1)
+    print(green("Video downloaded successfully"))
 
 
 def download_playlist(url: str, save_path: str):
@@ -200,3 +207,5 @@ def download_playlist(url: str, save_path: str):
     }
     youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
     move_video()
+    sleep(1)
+    print(green("Playlist downloaded successfully"))
