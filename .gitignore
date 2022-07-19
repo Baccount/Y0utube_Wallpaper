@@ -1,6 +1,11 @@
 __pycache__/yt_functions.cpython-39.pyc
 .markdownlint.yaml
 .trunk/trunk.yaml
-.gitignore
 .flake8
 .isort.cfg
+.vscode/settings.json
+.gitignore
+__pycache__/functions.cpython-39.pyc
+__pycache__
+.trunk
+.vscode
