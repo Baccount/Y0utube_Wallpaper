@@ -6,7 +6,6 @@ from functions import (
     delete_temp_folder,
     show_splash,
     download_video,
-    download_playlist,
 )
 
 # Youtube Offline Downloader
@@ -33,7 +32,7 @@ def main():
             download_video(url)
         elif choice == "2":
             url = input("Enter the URL of the playlist: ")
-            download_playlist(url)
+            download_video(url, playlist=True)
         elif choice == "3":
             print("Exiting...")
             exit(0)
@@ -63,7 +62,7 @@ def argument():
     # if the playlist arg is provided, then download the playlist
     if parser.parse_args().playlist:
         # pass terminal=True if program will quit after downloading
-        download_playlist(parser.parse_args().playlist, terminal=True)
+        download_video(parser.parse_args().playlist, terminal=True, playlist=True)
 
 
 if __name__ == "__main__":

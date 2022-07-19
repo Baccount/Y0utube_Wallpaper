@@ -1,4 +1,4 @@
-from functions import create_temp_folder, delete_temp_folder, download_video
+from functions import create_temp_folder, delete_temp_folder, download_video, check_url
 import os
 
 temp_path = os.path.expanduser("~") + "/Library/Caches/Y0utube"
@@ -35,3 +35,10 @@ def test_download_video():
     create_temp_folder()
     assert download_video("https://www.youtube.com/watch?v=Wch3gJG2GJ4")
     delete_temp_folder()
+
+def test_check_url():
+    """
+    Test the check_url function
+    """
+    assert check_url("https://www.youtube.com/watch?v=Wch3gJG2GJ4")
+    assert check_url("https://wwwyoutube.com/watch?v=Wch3gJG2GJ4") is False
