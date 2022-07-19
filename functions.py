@@ -21,7 +21,7 @@ def create_temp_folder():
         os.makedirs(temp_path)
 
 
-def move_video():
+def move_video() -> bool:
     """
     Move the video from the temporary folder to the final folder
     """
@@ -47,10 +47,6 @@ def delete_temp_folder():
         os.system("rm -rf " + temp_path)
 
 
-def get_random_number():
-    return str(randint(0, 100000))
-
-
 def show_splash():
     """
     Display splash screen
@@ -68,7 +64,7 @@ def clear_screen():
     print("\n" * 25)
 
 
-def check_url(url: str):
+def check_url(url: str) -> bool:
     """
     It takes a string as an argument, checks if it's a valid youtube url, and returns the url if it is,
     or None if it isn't
@@ -120,7 +116,7 @@ def blue(text: str) -> str:
     return "\033[34m" + text + "\033[0m"
 
 
-def download_video(url: str, terminal: bool = False, playlist: bool = False):
+def download_video(url: str, terminal: bool = False, playlist: bool = False) -> bool:
     """
     Download playlist from youtube using youtube-dl
 
