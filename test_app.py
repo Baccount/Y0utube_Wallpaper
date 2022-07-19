@@ -26,3 +26,12 @@ def test_delete_temp_folder():
     delete_temp_folder()
     assert not os.path.exists(temp_path)
     delete_temp_folder()
+
+def test_download_video():
+    """
+    Test the download_video function
+    """
+    delete_temp_folder()
+    create_temp_folder()
+    assert download_video("https://www.youtube.com/watch?v=Wch3gJG2GJ4")
+    delete_temp_folder()

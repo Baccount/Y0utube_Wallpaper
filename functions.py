@@ -126,7 +126,8 @@ def download_video(url: str, terminal: bool = False):
     """
     if check_url(url) is None:
         print("Invalid URL")
-        return
+        # for testing purposes
+        return False
 
     ydl_opts = {
         # hight quality video
@@ -142,12 +143,16 @@ def download_video(url: str, terminal: bool = False):
         # close program if the user is using the command line
         if terminal is True:
             exit(0)
+        # for testing purposes
+        return True
     except Exception as e:
         print(red("Error: " + str(e)))
         print(red("Video not downloaded"))
         delete_temp_folder()
         if terminal is True:
             exit(0)
+        # for testing purposes
+        return False
 
 
 def download_playlist(url: str, terminal: bool = False):
@@ -159,10 +164,10 @@ def download_playlist(url: str, terminal: bool = False):
     :param terminal: If the user is using the command lines Do Not show UI, just quit
     :type terminal: bool
     """
-    # get the path to save the video
-    save_path = final_path
-    if save_path is None:
-        return
+    if check_url(url) is None:
+        print("Invalid URL")
+        # for testing purposes
+        return False
     # download playlist from youtube using youtube-dl
     ydl_opts = {
         # hight quality video
@@ -178,9 +183,13 @@ def download_playlist(url: str, terminal: bool = False):
         sleep(1)
         if terminal is True:
             exit(0)
+        # for testing purposes
+        return True
     except Exception as e:
         print(red("Error: " + str(e)))
         print(red("Playlist not downloaded"))
         delete_temp_folder()
         if terminal is True:
             exit(0)
+        # for testing purposes
+        return False
