@@ -22,6 +22,7 @@ def test_create_temp_folder():
     delete_temp_folder()
     create_temp_folder()
     assert os.path.exists(temp_path) is True
+    # clean up
     delete_temp_folder()
 
 
@@ -49,6 +50,7 @@ def test_download_video():
     delete_temp_folder()
     create_temp_folder()
     assert download_video("https://www.youtube.com/watch?v=Wch3gJG2GJ4") is True
+    # clean up
     delete_temp_folder()
 
 
@@ -60,4 +62,5 @@ def test_move_video():
     create_temp_folder()
     download_video("https://www.youtube.com/watch?v=Wch3gJG2GJ4")
     assert move_video() is True
+    # clean up
     delete_temp_folder()
