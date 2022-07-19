@@ -1,11 +1,23 @@
 import argparse as ap
 
-from yt_functions import clear_screen, playlist, show_splash, video
+from yt_functions import (
+    clear_screen,
+    create_temp_folder,
+    delete_temp_folder,
+    playlist,
+    show_splash,
+    video,
+)
 
 # Youtube Offline Downloader
 
 
 def main():
+    # delete the temp folder if it exists
+    delete_temp_folder()
+    # creates a temporary folder to store the downloaded videos
+    create_temp_folder()
+
     # get arguments from user using argparse module for only the url
     parser = ap.ArgumentParser(description="Youtube Offline Downloader")
     parser.add_argument(
