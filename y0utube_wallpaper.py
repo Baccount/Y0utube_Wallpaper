@@ -48,7 +48,7 @@ def argument():
     """
     parser = ap.ArgumentParser(description="Youtube Offline Downloader")
     parser.add_argument(
-        "-u", "--url", help="URL of the video or playlist to download", required=False
+        "-u", "--url", help="URL of the video to download", required=False
     )
     # playlist argument
     parser.add_argument(
