@@ -127,7 +127,7 @@ def download_video(url: str, terminal: bool = False, playlist: bool = False) -> 
     :param playlist: If the user is downloading a playlist = True
     :type playlist: bool
     """
-    if check_url(url) is False:
+    if not check_url(url):
         print("Invalid URL")
         # for testing purposes
         return False
