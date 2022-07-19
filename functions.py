@@ -83,6 +83,7 @@ def check_url(url: str):
     if match:
         return match.group()
     elif match is None:
+        # for testing purposes
         return False
 
 
