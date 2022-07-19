@@ -30,7 +30,11 @@ def move_video():
         for file in os.listdir(temp_path):
             os.rename(temp_path + "/" + file, final_path + "/" + file)
         print(green("Video installed successfully"))
+        # for testing purposes
+        return True
     except Exception as e:
+        # for testing purposes
+        return False
         print(red("Error: " + str(e)))
         print(red("Video not installed"))
 

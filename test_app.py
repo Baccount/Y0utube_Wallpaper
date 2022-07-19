@@ -1,6 +1,12 @@
 import os
 
-from functions import check_url, create_temp_folder, delete_temp_folder, download_video
+from functions import (
+    check_url,
+    create_temp_folder,
+    delete_temp_folder,
+    download_video,
+    move_video,
+)
 
 temp_path = os.path.expanduser("~") + "/Library/Caches/Y0utube"
 final_path = (
@@ -15,7 +21,7 @@ def test_create_temp_folder():
     """
     delete_temp_folder()
     create_temp_folder()
-    assert os.path.exists(temp_path)
+    assert os.path.exists(temp_path) is True
     delete_temp_folder()
 
 
@@ -26,7 +32,6 @@ def test_delete_temp_folder():
     create_temp_folder()
     delete_temp_folder()
     assert not os.path.exists(temp_path)
-    delete_temp_folder()
 
 
 def test_check_url():
@@ -43,5 +48,16 @@ def test_download_video():
     """
     delete_temp_folder()
     create_temp_folder()
-    assert download_video("https://www.youtube.com/watch?v=Wch3gJG2GJ4")
+    assert download_video("https://www.youtube.com/watch?v=Wch3gJG2GJ4") is True
+    delete_temp_folder()
+
+
+def test_move_video():
+    """
+    Test the move_video function
+    """
+    delete_temp_folder()
+    create_temp_folder()
+    download_video("https://www.youtube.com/watch?v=Wch3gJG2GJ4")
+    assert move_video() is True
     delete_temp_folder()
