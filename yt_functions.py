@@ -43,8 +43,6 @@ def delete_temp_folder():
         os.system("rm -rf " + temp_path)
 
 
-
-
 def get_random_number():
     return str(randint(0, 100000))
 
@@ -89,7 +87,7 @@ def playlist(url: str = None):
         return
 
     # download playlist from youtube using youtube-dl
-    download_playlist(url, save_path)
+    download_playlist(url)
     print("Playlist downloaded successfully")
 
 
