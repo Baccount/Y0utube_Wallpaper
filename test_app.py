@@ -26,4 +26,3 @@ def test_delete_temp_folder():
     delete_temp_folder()
     assert not os.path.exists(temp_path)
     delete_temp_folder()
-

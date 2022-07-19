@@ -171,8 +171,8 @@ def download_video(url: str):
     ydl_opts = {
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
-        # save location of the video
-        "outtmpl": temp_path + "/" + get_random_number(),
+        # name of the video is the title
+        "outtmpl": temp_path + "/" + '%(title)s',
     }
     try:
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
@@ -199,7 +199,7 @@ def download_playlist(url: str):
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": temp_path + "/" + get_random_number(),
+        "outtmpl": temp_path + "/" + '%(title)s',
         "yes-playlist": True,
     }
     try:
