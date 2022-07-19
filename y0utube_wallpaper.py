@@ -1,6 +1,6 @@
 import argparse as ap
 
-from yt_functions import (
+from functions import (
     clear_screen,
     create_temp_folder,
     delete_temp_folder,
@@ -40,7 +40,12 @@ def main():
 
 
 def argument():
-    # get arguments from user using argparse module for only the url
+    """Parsing the arguments passed by the user.
+    optional arguments:
+    -h, --help            show this help message and exit
+    -u URL, --url URL     URL of the video or playlist to download
+    -pl PLAYLIST, --playlist PLAYLIST URL of the playlist to download
+    """
     parser = ap.ArgumentParser(description="Youtube Offline Downloader")
     parser.add_argument(
         "-u", "--url", help="URL of the video or playlist to download", required=False
