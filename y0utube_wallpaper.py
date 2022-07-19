@@ -56,12 +56,14 @@ def argument():
     )
 
     # if the url arg is provided, then download the video
+    # pass terminal=True if program will quit after downloading
     if parser.parse_args().url:
-        video(parser.parse_args().url)
+        video(parser.parse_args().url, terminal=True)
 
     # if the playlist arg is provided, then download the playlist
     if parser.parse_args().playlist:
-        playlist(parser.parse_args().playlist)
+        # pass terminal=True if program will quit after downloading
+        playlist(parser.parse_args().playlist, terminal=True)
 
 
 if __name__ == "__main__":

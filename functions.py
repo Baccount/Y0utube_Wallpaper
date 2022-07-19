@@ -47,7 +47,7 @@ def get_random_number():
     return str(randint(0, 100000))
 
 
-def video(url: str = None):
+def video(url: str = None, terminal: bool = False):
     """
     Download the video from the given url
 
@@ -65,11 +65,11 @@ def video(url: str = None):
         return
 
     # download the video
-    download_video(url)
+    download_video(url, terminal)
     print("Video downloaded successfully")
 
 
-def playlist(url: str = None):
+def playlist(url: str = None, terminal: bool = False):
     """
     Download playlist from youtube using youtube-dl
 
@@ -87,7 +87,7 @@ def playlist(url: str = None):
         return
 
     # download playlist from youtube using youtube-dl
-    download_playlist(url)
+    download_playlist(url, terminal)
     print("Playlist downloaded successfully")
 
 
@@ -158,15 +158,15 @@ def blue(text: str) -> str:
     """
     return "\033[34m" + text + "\033[0m"
 
-
-def download_video(url: str):
+# Optional argument
+def download_video(url: str, terminal: bool = False):
     """
     Download the video from the given url and save it to the given path
 
     :param url: the url of the video you want to download
     :type url: str
-    :param save_path: The path where you want to save the video
-    :type save_path: str
+    :param terminal: If the user is using the command lines Do Not show UI, just quit
+    :type terminal: bool
     """
     ydl_opts = {
         # hight quality video
@@ -179,20 +179,25 @@ def download_video(url: str):
         print(green("Video downloaded successfully"))
         move_video()
         sleep(1)
+        # close program if the user is using the command line
+        if terminal is True:
+            exit(0)
     except Exception as e:
         print(red("Error: " + str(e)))
         print(red("Video not downloaded"))
         delete_temp_folder()
+        if terminal is True:
+            exit(0)
 
 
-def download_playlist(url: str):
+def download_playlist(url: str, terminal: bool = False):
     """
     Download playlist from youtube using youtube-dl
 
     :param url: the url of the playlist
     :type url: str
-    :param save_path: The path where you want to save the downloaded videos
-    :type save_path: str
+    :param terminal: If the user is using the command lines Do Not show UI, just quit
+    :type terminal: bool
     """
     # download playlist from youtube using youtube-dl
     ydl_opts = {
@@ -207,7 +212,11 @@ def download_playlist(url: str):
         print(green("Playlist downloaded successfully"))
         move_video()
         sleep(1)
+        if terminal is True:
+            exit(0)
     except Exception as e:
         print(red("Error: " + str(e)))
         print(red("Playlist not downloaded"))
         delete_temp_folder()
+        if terminal is True:
+            exit(0)
