@@ -137,7 +137,7 @@ def download_video(url: str, terminal: bool = False, playlist: bool = False) -> 
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
         "outtmpl": temp_path + "/" + "%(title)s",
-        "yes-playlist": True if playlist is True else False,
+        "yes-playlist": True if playlist else False,
     }
     try:
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
