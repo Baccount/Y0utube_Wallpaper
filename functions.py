@@ -1,6 +1,5 @@
 import os
 import re  # regex
-from random import randint
 from time import sleep
 
 import youtube_dl
