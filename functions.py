@@ -128,10 +128,6 @@ def download_video(url: str, terminal: bool = False):
         print("Invalid URL")
         return
 
-    # get the path to save the video
-    save_path = final_path
-    if save_path is None:
-        return
     ydl_opts = {
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
@@ -163,11 +159,6 @@ def download_playlist(url: str, terminal: bool = False):
     :param terminal: If the user is using the command lines Do Not show UI, just quit
     :type terminal: bool
     """
-    # check if the url is valid
-    if check_url(url) is None:
-        print("Invalid URL")
-        return
-
     # get the path to save the video
     save_path = final_path
     if save_path is None:
