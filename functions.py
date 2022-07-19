@@ -115,8 +115,6 @@ def blue(text: str) -> str:
     return "\033[34m" + text + "\033[0m"
 
 
-
-
 def download_video(url: str, terminal: bool = False, playlist: bool = False):
     """
     Download playlist from youtube using youtube-dl
@@ -137,7 +135,7 @@ def download_video(url: str, terminal: bool = False, playlist: bool = False):
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": temp_path + "/" + '%(title)s',
+        "outtmpl": temp_path + "/" + "%(title)s",
         "yes-playlist": True if playlist is True else False,
     }
     try:

@@ -4,8 +4,8 @@ from functions import (
     clear_screen,
     create_temp_folder,
     delete_temp_folder,
-    show_splash,
     download_video,
+    show_splash,
 )
 
 # Youtube Offline Downloader
