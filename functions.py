@@ -30,7 +30,11 @@ def move_video():
         for file in os.listdir(temp_path):
             os.rename(temp_path + "/" + file, final_path + "/" + file)
         print(green("Video installed successfully"))
+        # for testing purposes
+        return True
     except Exception as e:
+        # for testing purposes
+        return False
         print(red("Error: " + str(e)))
         print(red("Video not installed"))
 
@@ -45,50 +49,6 @@ def delete_temp_folder():
 
 def get_random_number():
     return str(randint(0, 100000))
-
-
-def video(url: str = None):
-    """
-    Download the video from the given url
-
-    :param url: the url of the video you want to download
-    :type url: str
-    """
-    # check if the url is valid
-    if check_url(url) is None:
-        print("Invalid URL")
-        return
-
-    # get the path to save the video
-    save_path = final_path
-    if save_path is None:
-        return
-
-    # download the video
-    download_video(url)
-    print("Video downloaded successfully")
-
-
-def playlist(url: str = None):
-    """
-    Download playlist from youtube using youtube-dl
-
-    :param url: the url of the playlist
-    :type url: str
-    """
-    # check if the url is valid
-    if check_url(url) is None:
-        print("Invalid URL")
-        return
-
-    # get the path to save the video
-    save_path = final_path
-    if save_path is None:
-        return
-
-    # download playlist from youtube using youtube-dl
-    download_playlist(url)
-    print("Playlist downloaded successfully")
 
 
 def show_splash():
@@ -123,7 +83,8 @@ def check_url(url: str):
     if match:
         return match.group()
     elif match is None:
-        return None
+        # for testing purposes
+        return False
 
 
 def green(text: str) -> str:
@@ -159,55 +120,43 @@ def blue(text: str) -> str:
     return "\033[34m" + text + "\033[0m"
 
 
-def download_video(url: str):
-    """
-    Download the video from the given url and save it to the given path
-
-    :param url: the url of the video you want to download
-    :type url: str
-    :param save_path: The path where you want to save the video
-    :type save_path: str
-    """
-    ydl_opts = {
-        # hight quality video
-        "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
-        # save location of the video
-        "outtmpl": temp_path + "/" + get_random_number(),
-    }
-    try:
-        youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
-        print(green("Video downloaded successfully"))
-        move_video()
-        sleep(1)
-    except Exception as e:
-        print(red("Error: " + str(e)))
-        print(red("Video not downloaded"))
-        delete_temp_folder()
-
-
-def download_playlist(url: str):
+def download_video(url: str, terminal: bool = False, playlist: bool = False):
     """
     Download playlist from youtube using youtube-dl
 
     :param url: the url of the playlist
     :type url: str
-    :param save_path: The path where you want to save the downloaded videos
-    :type save_path: str
+    :param terminal: If the user is using the command lines Do Not show UI, just quit
+    :type terminal: bool
+    :param playlist: If the user is downloading a playlist = True
+    :type playlist: bool
     """
+    if check_url(url) is False:
+        print("Invalid URL")
+        # for testing purposes
+        return False
     # download playlist from youtube using youtube-dl
     ydl_opts = {
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": temp_path + "/" + get_random_number(),
-        "yes-playlist": True,
+        "outtmpl": temp_path + "/" + "%(title)s",
+        "yes-playlist": True if playlist is True else False,
     }
     try:
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
         print(green("Playlist downloaded successfully"))
         move_video()
         sleep(1)
+        if terminal is True:
+            exit(0)
+        # for testing purposes
+        return True
     except Exception as e:
         print(red("Error: " + str(e)))
         print(red("Playlist not downloaded"))
         delete_temp_folder()
+        if terminal is True:
+            exit(0)
+        # for testing purposes
+        return False

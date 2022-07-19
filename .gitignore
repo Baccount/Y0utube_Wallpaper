@@ -9,3 +9,4 @@ __pycache__/functions.cpython-39.pyc
 __pycache__
 .trunk
 .vscode
+.pytest_cache

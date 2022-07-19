@@ -4,9 +4,8 @@ from functions import (
     clear_screen,
     create_temp_folder,
     delete_temp_folder,
-    playlist,
+    download_video,
     show_splash,
-    video,
 )
 
 # Youtube Offline Downloader
@@ -30,10 +29,10 @@ def main():
         choice = input("Enter your choice: ")
         if choice == "1":
             url = input("Enter the URL of the video: ")
-            video(url)
+            download_video(url)
         elif choice == "2":
             url = input("Enter the URL of the playlist: ")
-            playlist(url)
+            download_video(url, playlist=True)
         elif choice == "3":
             print("Exiting...")
             exit(0)
@@ -56,12 +55,14 @@ def argument():
     )
 
     # if the url arg is provided, then download the video
+    # pass terminal=True if program will quit after downloading
     if parser.parse_args().url:
-        video(parser.parse_args().url)
+        download_video(parser.parse_args().url, terminal=True)
 
     # if the playlist arg is provided, then download the playlist
     if parser.parse_args().playlist:
-        playlist(parser.parse_args().playlist)
+        # pass terminal=True if program will quit after downloading
+        download_video(parser.parse_args().playlist, terminal=True, playlist=True)
 
 
 if __name__ == "__main__":
