@@ -17,27 +17,8 @@ def main():
     delete_temp_folder()
     # creates a temporary folder to store the downloaded videos
     create_temp_folder()
-
-    # get arguments from user using argparse module for only the url
-    parser = ap.ArgumentParser(description="Youtube Offline Downloader")
-    parser.add_argument(
-        "-u", "--url", help="URL of the video or playlist to download", required=False
-    )
-    parser.add_argument(
-        "-p", "--path", help="Path to save the video or playlist", required=False
-    )
-    # playlist argument
-    parser.add_argument(
-        "-pl", "--playlist", help="URL of the playlist to download", required=False
-    )
-
-    # if the url arg is provided, then download the video
-    if parser.parse_args().url:
-        video(parser.parse_args().url)
-
-    # if the playlist arg is provided, then download the playlist
-    if parser.parse_args().playlist:
-        playlist(parser.parse_args().playlist)
+    # catch arguments from user
+    argument()
     while True:
         # if no arguments are passed, show the splash screen
         clear_screen()
@@ -56,6 +37,26 @@ def main():
         elif choice == "3":
             print("Exiting...")
             exit(0)
+
+
+def argument():
+    # get arguments from user using argparse module for only the url
+    parser = ap.ArgumentParser(description="Youtube Offline Downloader")
+    parser.add_argument(
+        "-u", "--url", help="URL of the video or playlist to download", required=False
+    )
+    # playlist argument
+    parser.add_argument(
+        "-pl", "--playlist", help="URL of the playlist to download", required=False
+    )
+
+    # if the url arg is provided, then download the video
+    if parser.parse_args().url:
+        video(parser.parse_args().url)
+
+    # if the playlist arg is provided, then download the playlist
+    if parser.parse_args().playlist:
+        playlist(parser.parse_args().playlist)
 
 
 if __name__ == "__main__":
