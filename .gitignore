@@ -6,3 +6,6 @@ __pycache__/yt_functions.cpython-39.pyc
 .vscode/settings.json
 .gitignore
 __pycache__/functions.cpython-39.pyc
+__pycache__
+.trunk
+.vscode
