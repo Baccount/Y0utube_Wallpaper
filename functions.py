@@ -143,15 +143,25 @@ def download_video(url: str, terminal: bool = False, playlist: bool = False) -> 
         print(green("Playlist downloaded successfully"))
         move_video()
         sleep(1)
-        if terminal is True:
-            exit(0)
         # for testing purposes
         return True
     except Exception as e:
-        print(red("Error: " + str(e)))
-        print(red("Playlist not downloaded"))
+        print(red("Error: Playlist not downloaded\n" + str(e)))
         delete_temp_folder()
         if terminal is True:
             exit(0)
         # for testing purposes
         return False
+    # close program if the user is using the command line
+    if terminal is True:
+        exit(0)
+
+
+def keyboard_interrupt():
+    """
+    Catch keyboard interrupt control + c
+    """
+    clear_screen()
+    print(red("Clearing temporary files"))
+    delete_temp_folder()
+    exit(0)

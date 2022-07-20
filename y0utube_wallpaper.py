@@ -6,15 +6,14 @@ from functions import (
     delete_temp_folder,
     download_video,
     show_splash,
+    keyboard_interrupt,
 )
 
 # Youtube Offline Downloader
 
 
 def main():
-    # delete the temp folder if it exists
     delete_temp_folder()
-    # creates a temporary folder to store the downloaded videos
     create_temp_folder()
     # catch arguments from user
     argument()
@@ -54,7 +53,6 @@ def argument():
         "-pl", "--playlist", help="URL of the playlist to download", required=False
     )
 
-    # if the url arg is provided, then download the video
     # pass terminal=True if program will quit after downloading
     if parser.parse_args().url:
         download_video(parser.parse_args().url, terminal=True)
@@ -66,4 +64,7 @@ def argument():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        keyboard_interrupt()
