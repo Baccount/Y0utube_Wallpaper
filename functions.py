@@ -24,7 +24,6 @@ def move_video() -> bool:
     """
     Move the video from the temporary folder to the final folder
     """
-    # move the video from the temporary folder to the given path
     try:
         for file in os.listdir(temp_path):
             os.rename(temp_path + "/" + file, final_path + "/" + file)
@@ -32,10 +31,9 @@ def move_video() -> bool:
         # for testing purposes
         return True
     except Exception as e:
+        print(red("Error: Video not installed\n" + str(e)))
         # for testing purposes
         return False
-        print(red("Error: " + str(e)))
-        print(red("Video not installed"))
 
 
 def delete_temp_folder():
@@ -77,7 +75,7 @@ def check_url(url: str) -> bool:
     match = re.match(regex, url)
     if match:
         return match.group()
-    elif match is None:
+    else:
         # for testing purposes
         return False
 
