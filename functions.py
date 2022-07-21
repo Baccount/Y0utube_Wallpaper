@@ -121,7 +121,7 @@ def download_video(url: str, terminal: bool = False, playlist: bool = False) -> 
     :type url: str
     :param terminal: If the user is using the command lines Do Not show UI, just quit
     :type terminal: bool
-    :param playlist: If the user is downloading a playlist = True
+    :param playlist: If the user is downloading a playlist
     :type playlist: bool
     """
     if not check_url(url):
