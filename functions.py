@@ -5,8 +5,8 @@ from time import sleep
 import youtube_dl
 from pyfiglet import Figlet
 
-temp_path = os.path.expanduser("~") + "/Library/Caches/Y0utube"
-final_path = (
+TEMP_PATH = os.path.expanduser("~") + "/Library/Caches/Y0utube"
+FINAL_PATH = (
     os.path.expanduser("~")
     + "/Library/Containers/whbalzac.Dongtaizhuomian/Data/Documents/Videos"
 )
@@ -16,8 +16,8 @@ def create_temp_folder():
     """
     Create a  temporary folder at the given path to save the videos
     """
-    if not os.path.exists(temp_path):
-        os.makedirs(temp_path)
+    if not os.path.exists(TEMP_PATH):
+        os.makedirs(TEMP_PATH)
 
 
 def move_video() -> bool:
@@ -25,8 +25,8 @@ def move_video() -> bool:
     Move the video from the temporary folder to the final folder
     """
     try:
-        for file in os.listdir(temp_path):
-            os.rename(temp_path + "/" + file, final_path + "/" + file)
+        for file in os.listdir(TEMP_PATH):
+            os.rename(TEMP_PATH + "/" + file, FINAL_PATH + "/" + file)
         print(green("Video installed successfully"))
         # for testing purposes
         return True
@@ -40,8 +40,8 @@ def delete_temp_folder():
     """
     Delete the temporary folder "Forcefully"
     """
-    if os.path.exists(temp_path):
-        os.system("rm -rf " + temp_path)
+    if os.path.exists(TEMP_PATH):
+        os.system("rm -rf " + TEMP_PATH)
 
 
 def show_splash():
@@ -133,7 +133,7 @@ def download_video(url: str, terminal: bool = False, playlist: bool = False) -> 
         # hight quality video
         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio",
         # save location of the video
-        "outtmpl": temp_path + "/" + "%(title)s",
+        "outtmpl": TEMP_PATH + "/" + "%(title)s",
         "yes-playlist": True if playlist else False,
     }
     try:
