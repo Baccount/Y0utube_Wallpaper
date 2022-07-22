@@ -12,7 +12,7 @@
 <h3 align="center">Y0uTube Wallpaper</h3>
 
   <p align="center">
-     Download Yo0Tube videos and use them as anime wallpaper on macOS
+     Download Yo0Tube videos and use them as animated wallpaper on macOS
     <br />
     <a href="https://github.com/Baccount/Y0utube_Wallpaper"><strong>Explore the docs »</strong></a>
     <br />
