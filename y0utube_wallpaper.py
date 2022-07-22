@@ -46,7 +46,7 @@ def argument():
     """
     parser = ap.ArgumentParser(description="Youtube Offline Downloader")
     parser.add_argument(
-        "-u", "--url", help="URL of the video to download", required=False
+        "-v", "--video", help="Video of the video to download", required=False
     )
     # playlist argument
     parser.add_argument(
@@ -54,8 +54,8 @@ def argument():
     )
 
     # pass terminal=True if program will quit after downloading
-    if parser.parse_args().url:
-        download_video(parser.parse_args().url, terminal=True)
+    if parser.parse_args().video:
+        download_video(parser.parse_args().video, terminal=True)
 
     # if the playlist arg is provided, then download the playlist
     if parser.parse_args().playlist:
