@@ -135,7 +135,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Brandon - [@BaccountGit](https://twitter.com/BaccountGit) - Email - turns.spread_0m@icloud.com
+Twitter - [@BaccountGit](https://twitter.com/BaccountGit) - Email - turns.spread_0m@icloud.com
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
