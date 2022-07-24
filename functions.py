@@ -137,6 +137,7 @@ def download_video(url: str, terminal: bool = False, playlist: bool = False) -> 
         "yes-playlist": True if playlist else False,
     }
     try:
+        print(blue("Press Ctrl+C to cancel"))
         youtube_dl.YoutubeDL(ydl_opts).extract_info(url)
         print(green("Playlist downloaded successfully"))
         move_video()
