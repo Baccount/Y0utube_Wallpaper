@@ -1,18 +1,22 @@
 import argparse as ap
+import os
 
 from functions import (
     clear_screen,
     create_temp_folder,
     delete_temp_folder,
     download_video,
-    show_splash,
     keyboard_interrupt,
+    show_splash,
 )
 
 # Youtube Offline Downloader
 
 
 def main():
+    if not checkWallpaper():
+        # Wallpaper engine is not installed
+        exit(1)
     delete_temp_folder()
     create_temp_folder()
     # catch arguments from user
@@ -61,6 +65,24 @@ def argument():
     if parser.parse_args().playlist:
         # pass terminal=True if program will quit after downloading
         download_video(parser.parse_args().playlist, terminal=True, playlist=True)
+
+
+def checkWallpaper() -> bool:
+    """
+    Check if the wallpaper engine is installed.
+    If not, install it.
+    return: True if wallpaper engine is installed, False if not.
+    """
+    usr = os.path.expanduser("~") + "/Library/Containers/whbalzac.Dongtaizhuomian"
+
+    if not os.path.exists(usr):
+        print("Please install Dynamic Wallpaper")
+        print(
+            "https://apps.apple.com/us/app/dynamic-wallpaper-engine/id1453504509?mt=12"
+        )
+        input("Press Enter to exit...")
+        return False
+    return True
 
 
 if __name__ == "__main__":
