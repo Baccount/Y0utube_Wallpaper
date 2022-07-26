@@ -7,6 +7,7 @@ from functions import (
     download_video,
     move_video,
 )
+from y0utube_wallpaper import checkWallpaper
 
 temp_path = os.path.expanduser("~") + "/Library/Caches/Y0utube"
 final_path = (
@@ -64,3 +65,10 @@ def test_move_video():
     assert move_video() is True
     # clean up
     delete_temp_folder()
+
+
+def test_checkWallpaper():
+    """
+    Test the checkWallpaper function
+    """
+    assert checkWallpaper() is True
