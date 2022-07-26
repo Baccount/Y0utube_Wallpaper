@@ -67,7 +67,7 @@ def argument():
         download_video(parser.parse_args().playlist, terminal=True, playlist=True)
 
 
-def checkWallpaper():
+def checkWallpaper() -> bool:
     """
     Check if the wallpaper engine is installed.
     If not, install it.
