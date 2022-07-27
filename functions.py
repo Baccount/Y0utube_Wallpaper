@@ -5,7 +5,7 @@ from time import sleep
 
 import youtube_dl
 
-from tools import blue, clear_screen, green, red, show_splash
+from tools import blue, clear_screen, green, red
 
 TEMP_PATH = os.path.expanduser("~") + "/Library/Caches/Y0utube"
 FINAL_PATH = (
