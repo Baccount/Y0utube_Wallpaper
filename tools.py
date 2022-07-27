@@ -37,10 +37,3 @@ def clear_screen():
     """
     print("\n" * 25)
 
-
-def delete_temp_folder():
-    """
-    Delete the temporary folder "Forcefully"
-    """
-    if os.path.exists(TEMP_PATH):
-        os.system("rm -rf " + TEMP_PATH)

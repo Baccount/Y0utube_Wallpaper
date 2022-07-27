@@ -2,7 +2,7 @@
 import os
 import re  # regex
 from time import sleep
-from tools import red, green, blue, clear_screen, delete_temp_folder
+from tools import red, green, blue, clear_screen
 
 import youtube_dl
 from pyfiglet import Figlet
@@ -37,6 +37,13 @@ def move_video() -> bool:
         # for testing purposes
         return False
 
+
+def delete_temp_folder():
+    """
+    Delete the temporary folder "Forcefully"
+    """
+    if os.path.exists(TEMP_PATH):
+        os.system("rm -rf " + TEMP_PATH)
 
 def show_splash():
     """
