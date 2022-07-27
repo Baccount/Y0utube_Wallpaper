@@ -36,4 +36,3 @@ def clear_screen():
     It prints 25 new lines
     """
     print("\n" * 25)
-

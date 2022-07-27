@@ -2,10 +2,11 @@
 import os
 import re  # regex
 from time import sleep
-from tools import red, green, blue, clear_screen
 
 import youtube_dl
 from pyfiglet import Figlet
+
+from tools import blue, clear_screen, green, red
 
 TEMP_PATH = os.path.expanduser("~") + "/Library/Caches/Y0utube"
 FINAL_PATH = (
@@ -44,6 +45,7 @@ def delete_temp_folder():
     """
     if os.path.exists(TEMP_PATH):
         os.system("rm -rf " + TEMP_PATH)
+
 
 def show_splash():
     """
