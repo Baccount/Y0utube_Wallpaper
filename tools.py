@@ -1,5 +1,6 @@
 from pyfiglet import Figlet
 
+
 def green(text: str) -> str:
     """
     `green` takes a string and returns a string
