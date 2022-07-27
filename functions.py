@@ -2,6 +2,7 @@
 import os
 import re  # regex
 from time import sleep
+from tools import red, green, blue, clear_screen, delete_temp_folder
 
 import youtube_dl
 from pyfiglet import Figlet
@@ -37,14 +38,6 @@ def move_video() -> bool:
         return False
 
 
-def delete_temp_folder():
-    """
-    Delete the temporary folder "Forcefully"
-    """
-    if os.path.exists(TEMP_PATH):
-        os.system("rm -rf " + TEMP_PATH)
-
-
 def show_splash():
     """
     Display splash screen
@@ -53,13 +46,6 @@ def show_splash():
     title = "Y0Utube \n Wallpaper"
     f = Figlet(font="standard")
     print(red(f.renderText(title)))
-
-
-def clear_screen():
-    """
-    It prints 25 new lines
-    """
-    print("\n" * 25)
 
 
 def check_url(url: str) -> bool:
@@ -79,39 +65,6 @@ def check_url(url: str) -> bool:
     else:
         # for testing purposes
         return False
-
-
-def green(text: str) -> str:
-    """
-    `green` takes a string and returns a string
-
-    :param text: the text to be colored
-    :type text: str
-    :return: The text in green.
-    """
-    return "\033[32m" + text + "\033[0m"
-
-
-def red(text: str) -> str:
-    """
-    `red` takes a string and returns a string
-
-    :param text: The text to be colored
-    :type text: str
-    :return: The text is being returned with the color red.
-    """
-    return "\033[31m" + text + "\033[0m"
-
-
-def blue(text: str) -> str:
-    """
-    `blue` takes a string and returns a string
-
-    :param text: The text to be colored
-    :type text: str
-    :return: The text is being returned with the color blue.
-    """
-    return "\033[34m" + text + "\033[0m"
 
 
 def download_video(url: str, terminal: bool = False, playlist: bool = False) -> bool:
