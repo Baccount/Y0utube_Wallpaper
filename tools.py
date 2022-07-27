@@ -1,3 +1,6 @@
+from pyfiglet import Figlet
+
+
 def green(text: str) -> str:
     """
     `green` takes a string and returns a string
@@ -36,3 +39,13 @@ def clear_screen():
     It prints 25 new lines
     """
     print("\n" * 25)
+
+
+def show_splash():
+    """
+    Display splash screen
+    """
+    clear_screen()
+    title = "Y0Utube \n Wallpaper"
+    f = Figlet(font="standard")
+    print(red(f.renderText(title)))

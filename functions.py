@@ -4,9 +4,8 @@ import re  # regex
 from time import sleep
 
 import youtube_dl
-from pyfiglet import Figlet
 
-from tools import blue, clear_screen, green, red
+from tools import blue, clear_screen, green, red, show_splash
 
 TEMP_PATH = os.path.expanduser("~") + "/Library/Caches/Y0utube"
 FINAL_PATH = (
@@ -45,16 +44,6 @@ def delete_temp_folder():
     """
     if os.path.exists(TEMP_PATH):
         os.system("rm -rf " + TEMP_PATH)
-
-
-def show_splash():
-    """
-    Display splash screen
-    """
-    clear_screen()
-    title = "Y0Utube \n Wallpaper"
-    f = Figlet(font="standard")
-    print(red(f.renderText(title)))
 
 
 def check_url(url: str) -> bool:
