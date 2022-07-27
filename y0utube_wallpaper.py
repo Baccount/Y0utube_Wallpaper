@@ -7,8 +7,8 @@ from functions import (
     delete_temp_folder,
     download_video,
     keyboard_interrupt,
-    show_splash,
 )
+from tools import show_splash
 
 # Youtube Offline Downloader
 
